@@ -46,6 +46,9 @@ Desktop.ini
 *.swp
 *.swo
 
+# Obsidian 工作区配置（刻意忽略，避免把本地界面状态提交进仓库）
+.obsidian/
+
 # 临时文件与备份
 *.tmp
 *.bak
