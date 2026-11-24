@@ -13,11 +13,17 @@
         <span class="brand__mark" aria-hidden="true">日</span>
         <div class="brand__text">
           <h1 class="brand__title">学习工作台</h1>
-          <p class="brand__sub">模块 A · 学习日历</p>
+          <p class="brand__sub">模块 A · 学习日历　|　模块 C · 事件提醒</p>
         </div>
       </div>
       <button class="btn btn--ghost" id="todayBtn" type="button">回到今天</button>
     </header>
+
+    <div class="notice" id="notice" hidden>
+      <span class="notice__icon" aria-hidden="true">⚠</span>
+      <span class="notice__text" id="noticeText"></span>
+      <button class="btn btn--mini" id="noticeClose" type="button">知道了</button>
+    </div>
 
     <main class="board">
       <div class="board__head">
@@ -51,20 +57,51 @@
     <div class="panel__body">
       <label class="field">
         <span class="field__label">备忘</span>
-        <textarea class="field__input" id="memo" rows="6" placeholder="今天要完成什么…"></textarea>
+        <textarea class="field__input" id="memo" rows="5" placeholder="今天要完成什么…"></textarea>
       </label>
       <p class="panel__hint" id="saveHint">输入即自动保存</p>
 
       <section class="panel__section">
-        <h3 class="panel__sectionTitle">当天汇总</h3>
-        <ul class="agenda">
-          <li class="agenda__item agenda__item--muted">
-            日程、事件、番茄、刷题记录之后都汇总到这里（模块 B / C / D / E）
-          </li>
-        </ul>
+        <div class="section-head">
+          <h3 class="panel__sectionTitle">事件</h3>
+          <button class="btn btn--mini" id="addEventBtn" type="button">＋ 新建</button>
+        </div>
+
+        <ul class="agenda" id="agendaList"></ul>
+
+        <form class="event-form" id="eventForm" hidden>
+          <label class="field field--tight">
+            <span class="field__label">做什么</span>
+            <input class="field__input field__input--single" id="evtTitle" type="text" maxlength="60" placeholder="例如：交线代作业" />
+          </label>
+
+          <label class="field field--tight">
+            <span class="field__label">截止时间</span>
+            <input class="field__input field__input--single" id="evtDue" type="datetime-local" />
+          </label>
+
+          <fieldset class="offsets">
+            <legend class="field__label">提前提醒</legend>
+            <label class="offsets__item"><input type="checkbox" value="720" /> 12 小时</label>
+            <label class="offsets__item"><input type="checkbox" value="180" /> 3 小时</label>
+            <label class="offsets__item"><input type="checkbox" value="60" /> 1 小时</label>
+            <label class="offsets__item"><input type="checkbox" value="30" /> 30 分钟</label>
+          </fieldset>
+
+          <p class="form-error" id="formError" hidden></p>
+
+          <div class="event-form__actions">
+            <button class="btn" id="evtCancel" type="button">取消</button>
+            <button class="btn btn--primary" id="evtSave" type="submit">保存</button>
+          </div>
+
+          <button class="btn btn--ghost btn--block" id="notifyBtn" type="button" hidden>开启系统通知</button>
+        </form>
       </section>
     </div>
   </aside>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
 
   <script src="assets/app.js"></script>
 </body>
