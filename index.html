@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>学习工作台 · 日历</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true">日</span>
+        <div class="brand__text">
+          <h1 class="brand__title">学习工作台</h1>
+          <p class="brand__sub">模块 A · 学习日历</p>
+        </div>
+      </div>
+      <button class="btn btn--ghost" id="todayBtn" type="button">回到今天</button>
+    </header>
+
+    <main class="board">
+      <div class="board__head">
+        <div class="month-nav">
+          <button class="btn btn--icon" id="prevBtn" type="button" aria-label="上一个月">‹</button>
+          <h2 class="month-nav__label" id="monthLabel">—</h2>
+          <button class="btn btn--icon" id="nextBtn" type="button" aria-label="下一个月">›</button>
+        </div>
+        <p class="board__meta" id="monthMeta"></p>
+      </div>
+
+      <div class="weekdays" aria-hidden="true">
+        <span>一</span><span>二</span><span>三</span><span>四</span>
+        <span>五</span><span>六</span><span>日</span>
+      </div>
+
+      <div class="grid" id="grid" aria-label="月历"></div>
+
+      <p class="empty-hint" id="emptyHint" hidden>这个月还没有记录，点任意一天开始写吧。</p>
+    </main>
+  </div>
+
+  <div class="scrim" id="scrim" hidden></div>
+
+  <aside class="panel" id="panel" aria-hidden="true" aria-labelledby="panelDate">
+    <header class="panel__head">
+      <h2 class="panel__date" id="panelDate"></h2>
+      <button class="btn btn--icon" id="closeBtn" type="button" aria-label="关闭">✕</button>
+    </header>
+
+    <div class="panel__body">
+      <label class="field">
+        <span class="field__label">备忘</span>
+        <textarea class="field__input" id="memo" rows="6" placeholder="今天要完成什么…"></textarea>
+      </label>
+      <p class="panel__hint" id="saveHint">输入即自动保存</p>
+
+      <section class="panel__section">
+        <h3 class="panel__sectionTitle">当天汇总</h3>
+        <ul class="agenda">
+          <li class="agenda__item agenda__item--muted">
+            日程、事件、番茄、刷题记录之后都汇总到这里（模块 B / C / D / E）
+          </li>
+        </ul>
+      </section>
+    </div>
+  </aside>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
